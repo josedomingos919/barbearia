@@ -1,26 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState }  from 'react';
 import { ImageBackground,Text,View, Image,
     TextInput,
-    Button,
     TouchableOpacity,
     Alert,
     StyleSheet
 } from 'react-native';
+
+import { AntDesign } from '@expo/vector-icons'; 
+import { FontAwesome } from '@expo/vector-icons'; 
+import * as Font from 'expo-font';
 
 /*
 1- Usar icon com expo vector icons,
 2- backgroud cover backgroud image,
 3- importar font no react
 4- drower navegator
+const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 */
 
 //const ImgBack = require("./ori.jpg");
 
 function Login(props){
 
-    useEffect(()=>{
-     
-    },[]);
     const img = {
         fundo : require('./../../assets/img/fundo.jpg'),
         logo  : require('./../../assets/img/logo.png')
@@ -30,14 +32,37 @@ function Login(props){
         Alert.alert("ARX-Barbeary","Bem-Vindo");
     }
 
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+    const fonts = {
+        'Billabong': require('./../../assets/font/Billabong.ttf'),
+    };
+
+    useEffect(() => {
+        (async () => {
+          try {
+            await Font.loadAsync(fonts);
+            setLoaded(true);
+          } catch (err) {
+            setError(err);
+          }
+    
+        })();
+      }), [fonts];
+
+      if (error) return <View><Text>{error.message}</Text></View>;
+      if (!loaded) return null;
+      console.log("Entrou");
+    //await Font.loadAsync({
+      //  'Billabong': require('./../../assets/font/Billabong.ttf'),
+    //});
+
     return(
         <ImageBackground blurRadius={10} 
             source={img.fundo} 
             style={styles.container} 
         >
-
-            <View style={styles.view}>  
-                
+            <View style={styles.view}>
                 <View style={styles.box1}>
                     <View style={styles.contlogo}><Image style={styles.logo} source={img.logo}/></View>
                     <View style={styles.info}>
@@ -46,19 +71,20 @@ function Login(props){
                         <Text style={styles.txtInfo}>-Barbeary</Text>
                         <Text style={styles.txtInfo}>| Better</Text> 
                     </View>
-                </View>   
+                </View>  
 
                 <View>
                     <Text style={styles.info1}>Entra feio & sai Bonito</Text>
                 </View>
 
-                <View style={styles.inputView} ><TextInput style={styles.inputText} placeholder="Email ou Usuário" /></View>
-                <View style={styles.inputView}><TextInput secureTextEntry={true} style={styles.inputText} placeholder="Palavra-Passe" /></View>
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="user" size={20} color="white" /><TextInput style={styles.inputText} placeholder="Email ou Usuário" /></View>
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="lock1" size={20} color="white" /><TextInput secureTextEntry={true} style={styles.inputText} placeholder="Palavra-Passe" /></View>
 
-                <View style={styles.buttonView}><TouchableOpacity onPress={logar} style={[styles.buttonViewBtn,styles.btn]} ><Text style={styles.txtBtn}>Login</Text></TouchableOpacity></View>
+                <View style={styles.buttonView}><TouchableOpacity onPress={logar} style={[styles.buttonViewBtn,styles.btn]} ><FontAwesome style={styles.ico2} name="sign-in" size={20} color="white" /><Text style={styles.txtBtn}>Login</Text></TouchableOpacity></View>
                 <View style={styles.buttonView1}><TouchableOpacity style={[styles.btn,styles.btnFacebook]}  ><Text style={styles.txtBtn}>Facebook</Text></TouchableOpacity><Text style={styles.txtOu} >Ou</Text><TouchableOpacity style={[styles.btn,styles.btnGoogle]} ><Text style={styles.txtBtn}>Google</Text></TouchableOpacity></View>
 
             </View>
+
         </ImageBackground>
     )
 }
@@ -66,6 +92,12 @@ function Login(props){
 export default Login;
 
 const styles = StyleSheet.create({
+    ico2:{
+        marginRight:10
+    },
+    ico:{
+        marginLeft:10
+    },
     txtOu:{
         color:'red',
         fontWeight:'bold'
@@ -107,6 +139,9 @@ const styles = StyleSheet.create({
     inputView:{
         width:'100%',
         display: 'flex',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
         marginBottom: 19,
         alignItems: 'center',
         borderWidth:1,
@@ -139,6 +174,7 @@ const styles = StyleSheet.create({
         marginBottom:25
     },
     txtInfo:{
+        fontFamily:'Billabong',
         //font-family: 'Billabong' !important;
         //fontFamily:'Billabong',
         fontWeight: 'bold',
@@ -187,3 +223,37 @@ const styles = StyleSheet.create({
     },
   });
   
+
+  /*
+  
+        
+        <ImageBackground blurRadius={10} 
+            source={img.fundo} 
+            style={styles.container} 
+        >
+
+            <View style={styles.view}>  
+                
+                <View style={styles.box1}>
+                    <View style={styles.contlogo}><Image style={styles.logo} source={img.logo}/></View>
+                    <View style={styles.info}>
+                        <Text style={styles.txtInfo}>ARX</Text>
+                        <Text style={styles.txtInfo}>Snack</Text>
+                        <Text style={styles.txtInfo}>-Barbeary</Text>
+                        <Text style={styles.txtInfo}>| Better</Text> 
+                    </View>
+                </View>   
+
+                <View>
+                    <Text style={styles.info1}>Entra feio & sai Bonito</Text>
+                </View>
+
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="user" size={20} color="white" /><TextInput style={styles.inputText} placeholder="Email ou Usuário" /></View>
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="lock1" size={20} color="white" /><TextInput secureTextEntry={true} style={styles.inputText} placeholder="Palavra-Passe" /></View>
+
+                <View style={styles.buttonView}><TouchableOpacity onPress={logar} style={[styles.buttonViewBtn,styles.btn]} ><FontAwesome style={styles.ico2} name="sign-in" size={20} color="white" /><Text style={styles.txtBtn}>Login</Text></TouchableOpacity></View>
+                <View style={styles.buttonView1}><TouchableOpacity style={[styles.btn,styles.btnFacebook]}  ><Text style={styles.txtBtn}>Facebook</Text></TouchableOpacity><Text style={styles.txtOu} >Ou</Text><TouchableOpacity style={[styles.btn,styles.btnGoogle]} ><Text style={styles.txtBtn}>Google</Text></TouchableOpacity></View>
+
+            </View>
+        </ImageBackground>
+  */
