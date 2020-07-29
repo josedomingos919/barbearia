@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+
 import React from 'react';
-import Application from "./src/App";
+import { StatusBar } from 'expo-status-bar';
+
+import Routes from './src/routes';
 
 export default function App() {
-  return (
-    [<StatusBar hidden={true}></StatusBar>,<Application />]
-  );
+  return <Routes />;
 }
