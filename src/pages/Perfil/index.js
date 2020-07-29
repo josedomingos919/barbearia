@@ -3,12 +3,12 @@ import { Text, View } from 'react-native';
 
 // import { Container } from './styles';
 
-const Home = () => {
+const Perfil = () => {
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>Perfil</Text>
     </View>
   );
 };
 
-export default Home;
+export default Perfil;
