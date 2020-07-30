@@ -23,6 +23,9 @@ const [loaded, setLoaded] = useState(false);
 
 function Login(props){
 
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+
     const img = {
         fundo : require('./../../assets/img/fundo.jpg'),
         logo  : require('./../../assets/img/logo.png')
@@ -32,10 +35,9 @@ function Login(props){
         Alert.alert("ARX-Barbeary","Bem-Vindo");
     }
 
-    const [loaded, setLoaded] = useState(false);
-    const [error, setError] = useState(false);
     const fonts = {
-        'Billabong': require('./../../assets/font/Billabong.ttf'),
+      Regular: require('./../../assets/font/ComingSoon-Regular.ttf'),
+      Billabong: require('./../../assets/font/Billabong.ttf'),
     };
 
     useEffect(() => {
@@ -49,13 +51,9 @@ function Login(props){
     
         })();
       }), [fonts];
-
-      if (error) return <View><Text>{error.message}</Text></View>;
-      if (!loaded) return null;
-      console.log("Entrou");
-    //await Font.loadAsync({
-      //  'Billabong': require('./../../assets/font/Billabong.ttf'),
-    //});
+     
+     if (error) return <View><Text>{error.message}</Text></View>;
+     if (!loaded) return null;
 
     return(
         <ImageBackground blurRadius={10} 
@@ -74,11 +72,11 @@ function Login(props){
                 </View>  
 
                 <View>
-                    <Text style={styles.info1}>Entra feio & sai Bonito</Text>
+                    <Text style={[styles.info1]}>Entra feio & sai Bonito</Text>
                 </View>
 
-                <View style={styles.inputView}><AntDesign style={styles.ico} name="user" size={20} color="white" /><TextInput style={styles.inputText} placeholder="Email ou Usuário" /></View>
-                <View style={styles.inputView}><AntDesign style={styles.ico} name="lock1" size={20} color="white" /><TextInput secureTextEntry={true} style={styles.inputText} placeholder="Palavra-Passe" /></View>
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="user" size={20} color="#ffffff99" /><TextInput style={styles.inputText} placeholder="Email ou Usuário" /></View>
+                <View style={styles.inputView}><AntDesign style={styles.ico} name="lock1" size={20} color="#ffffff99" /><TextInput secureTextEntry={true} style={styles.inputText} placeholder="Palavra-Passe" /></View>
 
                 <View style={styles.buttonView}><TouchableOpacity onPress={logar} style={[styles.buttonViewBtn,styles.btn]} ><FontAwesome style={styles.ico2} name="sign-in" size={20} color="white" /><Text style={styles.txtBtn}>Login</Text></TouchableOpacity></View>
                 <View style={styles.buttonView1}><TouchableOpacity style={[styles.btn,styles.btnFacebook]}  ><Text style={styles.txtBtn}>Facebook</Text></TouchableOpacity><Text style={styles.txtOu} >Ou</Text><TouchableOpacity style={[styles.btn,styles.btnGoogle]} ><Text style={styles.txtBtn}>Google</Text></TouchableOpacity></View>
@@ -99,8 +97,10 @@ const styles = StyleSheet.create({
         marginLeft:10
     },
     txtOu:{
+        fontFamily:'Billabong',
         color:'red',
-        fontWeight:'bold'
+        fontSize:20
+        //fontWeight:'bold'
     },
     btnGoogle:{
         backgroundColor:'#E42D27'
@@ -161,8 +161,8 @@ const styles = StyleSheet.create({
     info1:{
         color: 'rgba(255,255,255,0.5)',
         letterSpacing: 2,
-        //fontFamily: 'Billabong',
-        fontSize: 18,
+        fontFamily: 'Billabong',
+        fontSize: 20,
         //borderBottom: '0.05rem solid rgba(255,255,255,0.5)',
         borderBottomWidth: 1,
         borderBottomColor:'rgba(255,255,255,0.5)',
@@ -175,11 +175,9 @@ const styles = StyleSheet.create({
     },
     txtInfo:{
         fontFamily:'Billabong',
-        //font-family: 'Billabong' !important;
-        //fontFamily:'Billabong',
-        fontWeight: 'bold',
+        fontWeight: '800',
         letterSpacing: 3,
-        fontSize: 14,
+        fontSize: 17.5,
         color: '#B90100',
     },
     info:{
