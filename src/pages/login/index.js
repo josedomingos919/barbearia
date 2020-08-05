@@ -57,11 +57,8 @@ export default function Login() {
         <Text>{error.message}</Text>
       </View>
     );
-  if (!loaded) return null;
-  console.log('Entrou');
-  //await Font.loadAsync({
-  //  'Billabong': require('./../../assets/font/Billabong.ttf'),
-  //});
+  if (!loaded) return <Text>Feio</Text>;
+  console.log('Entrou yha kkk');
 
   return (
     <ImageBackground
@@ -87,11 +84,11 @@ export default function Login() {
         </View>
 
         <View style={styles.inputView}>
-          <AntDesign style={styles.ico} name='user' size={20} color='white' />
+          <AntDesign style={styles.ico} name='user' size={20} color='#ffffff99' />
           <TextInput style={styles.inputText} placeholder='Email ou Usuário' />
         </View>
         <View style={styles.inputView}>
-          <AntDesign style={styles.ico} name='lock1' size={20} color='white' />
+          <AntDesign style={styles.ico} name='lock1' size={20} color='#ffffff99' />
           <TextInput
             secureTextEntry={true}
             style={styles.inputText}
@@ -137,8 +134,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   txtOu: {
+    fontFamily: 'Billabong',
     color: 'red',
-    fontWeight: 'bold',
   },
   btnGoogle: {
     backgroundColor: '#E42D27',
@@ -199,7 +196,7 @@ const styles = StyleSheet.create({
   info1: {
     color: 'rgba(255,255,255,0.5)',
     letterSpacing: 2,
-    //fontFamily: 'Billabong',
+    fontFamily: 'Billabong',
     fontSize: 18,
     //borderBottom: '0.05rem solid rgba(255,255,255,0.5)',
     borderBottomWidth: 1,
@@ -213,9 +210,6 @@ const styles = StyleSheet.create({
   },
   txtInfo: {
     fontFamily: 'Billabong',
-    //font-family: 'Billabong' !important;
-    //fontFamily:'Billabong',
-    fontWeight: 'bold',
     letterSpacing: 3,
     fontSize: 14,
     color: '#B90100',

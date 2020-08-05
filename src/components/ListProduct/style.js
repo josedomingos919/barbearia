@@ -1,0 +1,123 @@
+
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../../styles';
+
+export default StyleSheet.create({
+    ico:{
+        marginLeft:3
+    },
+    vwTetse:{
+        display:'flex',
+        flexDirection:'row'
+    },
+    box11:{
+        backgroundColor:'green',
+        width:'100%',
+        display:'flex',
+        flexDirection:'row'
+    },
+    imgContainer:{
+        position:'relative'
+    },
+    newsTxt:{
+        color:'white',
+        fontWeight:'bold'
+    },
+    title2:{
+        fontWeight:'bold',
+        fontSize:16,
+        width:'100%',
+    },
+    title1:{
+        fontWeight:'bold',
+        color:'rgba(0,0,0,0.5)',
+        fontSize:12
+    },
+    news22:{
+        borderRadius:5,
+        color:'white',
+        fontWeight:'bold',
+        padding:3,
+        marginTop:8,
+        marginLeft:8,
+        elevation:10,
+        zIndex:1,
+        top:0,
+        left:0,
+        backgroundColor: '#FFCC00',
+        position:'absolute'
+    },
+    news1:{
+        borderRadius:5,
+        color:'white',
+        fontWeight:'bold',
+        padding:3,
+        marginTop:8,
+        marginLeft:8,
+        elevation:10,
+        zIndex:1,
+        top:0,
+        left:0,
+        backgroundColor: '#23A359',
+        position:'absolute'
+    },
+    news2:{
+        backgroundColor: '#FFCC00',
+        position:'absolute'
+    },
+    vw2text:{
+        display:'flex',
+        flexDirection:'row',
+        marginTop:2
+    },
+    sub1:{
+        fontWeight:'bold',
+        marginRight:4,
+        paddingRight:4,
+        borderRightColor:'rgba(0,0,0,0.2)',
+        borderRightWidth:0.5,
+        color:'#E42D27',
+        textDecorationLine:'line-through'
+    },
+    sub2:{
+        fontWeight:'bold',
+        marginRight:4,
+        fontSize:13.5,
+        paddingRight:4,
+        color:'green',
+    },
+    sub4:{
+        marginTop:3,
+        fontSize:10
+    },
+    sub3:{
+        fontSize:11.5,
+        borderLeftColor:'rgba(0,0,0,0.2)',
+        borderLeftWidth:0.5,
+        marginLeft:4,
+        paddingLeft:4,
+        //fontWeight:'bold',
+        marginRight:4,
+        paddingRight:4,
+        color:'rgba(0,0,0,0.5)',
+    },
+    box1:{
+        marginBottom: 15,
+        backgroundColor:'white',
+        borderRadius:5,
+        elevation:3,
+        display:'flex',
+        flexDirection:'row',
+        width:'100%',
+    },
+    vwInfo:{
+        padding:5,
+        width:'100%'
+    },
+    prodImg:{
+        borderTopLeftRadius:5,
+        borderBottomLeftRadius: 5,
+        width:100,
+        height:100
+    }
+});
