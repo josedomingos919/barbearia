@@ -7,7 +7,10 @@ import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer'
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Perfil from '../pages/Perfil';
+import Register from '../pages/Register';
+
 import { AntDesign, Feather } from '@expo/vector-icons';
+import { useNav } from './../context/navigation';
 
 const StackScreen  = createStackNavigator();
 const DrawerScreen = createDrawerNavigator();
@@ -33,7 +36,11 @@ const LeftMenu = (props)=>{
   )
 }
 
-const DrawerNavigation = () => {
+const DrawerNavigation = (props) => {
+
+  const { setNav } = useNav();
+  setNav(props);
+
   return (
     <DrawerScreen.Navigator
       initialRouteName="Home"
@@ -47,7 +54,6 @@ const DrawerNavigation = () => {
       }}
      drawerContent = {LeftMenu}
     >
-
       <DrawerScreen.Screen
         name='Perfil'
         component={Perfil}
@@ -56,6 +62,7 @@ const DrawerNavigation = () => {
           headerShown:true
         }}
       />
+
       <DrawerScreen.Screen
         name='Home'
         component={Home}
@@ -63,41 +70,46 @@ const DrawerNavigation = () => {
           drawerIcon: ({}) => <AntDesign name='home' size={iconDrawer.size} color='white' />,
         }}
       />
-      <DrawerScreen.Screen 
-        name='Home1' component={Home} 
-        options={{
-          drawerIcon: ({}) => <AntDesign name='home' size={iconDrawer.size} color='white' />,
-        }}
-      />
-      <DrawerScreen.Screen 
-        name='Home2' component={Home} 
-        options={{
-          drawerIcon: ({}) => <AntDesign name='home' size={iconDrawer.size} color='white' />,
-        }}
-      />
+   
+ 
     </DrawerScreen.Navigator>
   );
 };
 
-export default AppRoutes = () => {
+const AppRoutes = () => {
   return (
     <NavigationContainer>
-      <StackScreen.Navigator initialRouteName='login'>
+      <StackScreen.Navigator initialRouteName='Login'>
         <StackScreen.Screen
           name='Login'
           key ='Login'
           component={Login}
           options={{ headerShown: false, headerLeft:null, gestureEnabled: false }}
-          
         />
         <StackScreen.Screen
           name='DrawerMenu'
           key='DrawerMenu'
           component={DrawerNavigation}
-  
+          options={{ headerShown: false, headerLeft:null, gestureEnabled: false }}
+        />
+
+        <StackScreen.Screen
+          name='Registar'
+          key='Registar'
+          component={Register}
           options={{ headerShown: false, headerLeft:null, gestureEnabled: false }}
         />
       </StackScreen.Navigator>
     </NavigationContainer>
   );
 };
+export default  AppRoutes;
+
+/*
+<StackScreen.Screen
+  name='Registar'
+  key='Registar'
+  component={Register}
+  options={{ headerShown: false, headerLeft:null, gestureEnabled: false }}
+/>
+*/

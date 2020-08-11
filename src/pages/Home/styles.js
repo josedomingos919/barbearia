@@ -5,7 +5,7 @@ import { COLORS } from '../../styles';
 export default StyleSheet.create({
     main:{
         flex:1,
-        backgroundColor:'#E9E8EE'
+        backgroundColor: COLORS.BACKGROUND
     },
     box4:{
         height:38,
@@ -83,6 +83,7 @@ export default StyleSheet.create({
         fontSize:15
     },
     list:{
+        flex:1,
         marginTop:15,
         width:'100%',
     }

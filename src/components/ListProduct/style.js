@@ -3,6 +3,16 @@ import { StyleSheet } from 'react-native';
 import { COLORS } from '../../styles';
 
 export default StyleSheet.create({
+    leftAchion:{
+        backgroundColor:"#388e3c",
+        justifyContent:"center",
+        flex:1,
+    },
+    achionText:{
+        fontSize:17,
+        color:"#FFF",
+        padding:20
+    },
     ico:{
         marginLeft:3
     },
@@ -16,8 +26,16 @@ export default StyleSheet.create({
         display:'flex',
         flexDirection:'row'
     },
+    vwImgC:{
+        borderTopLeftRadius:5,
+        borderBottomLeftRadius: 5,
+        flex:1,
+        width:100,
+        overflow:'hidden'
+    },
     imgContainer:{
-        position:'relative'
+        position:'relative',
+        display:'flex'
     },
     newsTxt:{
         color:'white',
@@ -117,7 +135,8 @@ export default StyleSheet.create({
     prodImg:{
         borderTopLeftRadius:5,
         borderBottomLeftRadius: 5,
-        width:100,
-        height:100
+        width:'100%',
+        height:'100%',
+        resizeMode:'stretch'
     }
 });
